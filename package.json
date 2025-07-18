@@ -1,0 +1,20 @@
+{
+    "name": "gorest-api-automation",
+    "version": "1.0.0",
+    "description": "API Automation for gorest.co.in using JavaScript",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha --timeout 10000 --reporter mochawesome --require dotenv/config"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "axios": "^1.10.0",
+        "chai": "^4.5.0",
+        "chance": "^1.1.13",
+        "dotenv": "^16.6.1",
+        "mocha": "^11.7.1",
+        "mochawesome": "^7.1.3"
+    }
+}

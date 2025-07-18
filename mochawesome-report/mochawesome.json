@@ -1,0 +1,284 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 7,
+    "passes": 4,
+    "pending": 0,
+    "failures": 3,
+    "start": "2025-07-18T01:55:36.856Z",
+    "end": "2025-07-18T01:55:39.838Z",
+    "duration": 2982,
+    "testsRegistered": 7,
+    "passPercent": 57.14285714285714,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d21b2965-78cb-428b-923f-6947db2ac89b",
+      "title": "",
+      "fullFile": "D:\\pointA\\test\\user.test.js",
+      "file": "\\test\\user.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b8ef2e53-8f78-4a4f-a897-ff09fadf392b",
+          "title": "GoRest User API Automation",
+          "fullFile": "D:\\pointA\\test\\user.test.js",
+          "file": "\\test\\user.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "7ed85741-c995-407a-b6f9-32136fa593f2",
+              "title": "Positive Scenarios",
+              "fullFile": "D:\\pointA\\test\\user.test.js",
+              "file": "\\test\\user.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should successfully create a new user",
+                  "fullTitle": "GoRest User API Automation Positive Scenarios should successfully create a new user",
+                  "timedOut": false,
+                  "duration": 454,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const userData = {\n    name: chance.name(),\n    email: chance.email({ domain: 'example.com' }), // Gunakan domain yang lebih umum untuk email\n    gender: chance.pickone(['male', 'female']),\n    status: chance.pickone(['active', 'inactive'])\n};\nconst response = await createUser(userData);\nexpect(response.status).to.equal(200); // Pastikan ini 200, sesuai API GoRest\nexpect(response.data.data).to.be.an('object');\nexpect(response.data.data.name).to.equal(userData.name);\nexpect(response.data.data.email).to.equal(userData.email);\nexpect(response.data.data.gender).to.equal(userData.gender);\nexpect(response.data.data.status).to.equal(userData.status);\nexpect(response.data.data.id).to.be.a('number');\nuserId = response.data.data.id; // Simpan ID pengguna untuk tes berikutnya\nconsole.log(`User created with ID: ${userId}`); // Untuk debugging",
+                  "err": {},
+                  "uuid": "b2402c39-4c5d-4e6b-8105-44e111a0e5cc",
+                  "parentUUID": "7ed85741-c995-407a-b6f9-32136fa593f2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should successfully get user details",
+                  "fullTitle": "GoRest User API Automation Positive Scenarios should successfully get user details",
+                  "timedOut": false,
+                  "duration": 341,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "expect(userId).to.exist; // Pastikan user ID tersedia dari tes sebelumnya\nconst response = await getUser(userId);\nexpect(response.status).to.equal(200);\nexpect(response.data.data).to.be.an('object');\nexpect(response.data.data.id).to.equal(userId);",
+                  "err": {},
+                  "uuid": "e2db917e-ec3f-4f6d-9e0f-4832a74c8a73",
+                  "parentUUID": "7ed85741-c995-407a-b6f9-32136fa593f2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should successfully update user details",
+                  "fullTitle": "GoRest User API Automation Positive Scenarios should successfully update user details",
+                  "timedOut": false,
+                  "duration": 402,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "expect(userId).to.exist;\nconst updatedName = chance.name();\nconst updatedEmail = chance.email({ domain: 'updated.com' });\nconst updateData = {\n    name: updatedName,\n    email: updatedEmail\n};\nconst response = await updateUser(userId, updateData);\nexpect(response.status).to.equal(200);\nexpect(response.data.data).to.be.an('object');\nexpect(response.data.data.id).to.equal(userId);\nexpect(response.data.data.name).to.equal(updatedName);\nexpect(response.data.data.email).to.equal(updatedEmail);",
+                  "err": {},
+                  "uuid": "68eeb943-2b4c-435e-9086-e6edae565e3f",
+                  "parentUUID": "7ed85741-c995-407a-b6f9-32136fa593f2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should successfully delete a user",
+                  "fullTitle": "GoRest User API Automation Positive Scenarios should successfully delete a user",
+                  "timedOut": false,
+                  "duration": 370,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "expect(userId).to.exist;\nconst response = await deleteUser(userId);\n// ---- PERBAIKAN DI SINI ----\n// Ubah asersi dari 204 ke 200 karena GoRest mengembalikan 200 untuk delete\nexpect(response.status).to.equal(200);\n// GoRest tidak selalu mengembalikan data.data=null untuk 200 delete, mungkin kosong {}\n// expect(response.data.data).to.be.null; // Anda bisa hapus atau sesuaikan ini jika perlu",
+                  "err": {},
+                  "uuid": "0543b515-91a3-4fc7-9f94-8ce82ae6e50c",
+                  "parentUUID": "7ed85741-c995-407a-b6f9-32136fa593f2",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "b2402c39-4c5d-4e6b-8105-44e111a0e5cc",
+                "e2db917e-ec3f-4f6d-9e0f-4832a74c8a73",
+                "68eeb943-2b4c-435e-9086-e6edae565e3f",
+                "0543b515-91a3-4fc7-9f94-8ce82ae6e50c"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1567,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 10000
+            },
+            {
+              "uuid": "e36b5a89-a88c-47ee-ad2c-2904a2e70b60",
+              "title": "Negative Scenarios",
+              "fullFile": "D:\\pointA\\test\\user.test.js",
+              "file": "\\test\\user.test.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before all\" hook in \"Negative Scenarios\"",
+                  "fullTitle": "GoRest User API Automation Negative Scenarios \"before all\" hook in \"Negative Scenarios\"",
+                  "timedOut": false,
+                  "duration": 367,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// Buat user yang akan digunakan untuk memicu error duplikat email\nconst userData = {\n    name: chance.name(),\n    email: chance.email({ domain: 'duplicate.com' }),\n    gender: 'male',\n    status: 'active'\n};\nconst response = await createUser(userData);\nexistingUserEmail = response.data.data.email;\nconsole.log(`Created user for 422 negative test: ${existingUserEmail}`);",
+                  "err": {},
+                  "uuid": "64ba8d3a-9774-4a91-a2ec-c8fed1fcc61a",
+                  "parentUUID": "e36b5a89-a88c-47ee-ad2c-2904a2e70b60",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should return 422 when creating a user with an existing email (duplicate data)",
+                  "fullTitle": "GoRest User API Automation Negative Scenarios should return 422 when creating a user with an existing email (duplicate data)",
+                  "timedOut": false,
+                  "duration": 376,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "const userData = {\n    name: chance.name(),\n    email: existingUserEmail, // Gunakan email yang sudah ada\n    gender: 'female',\n    status: 'inactive'\n};\ntry {\n    const response = await createUser(userData);\n    // Jika API tidak melempar error, log respons sukses untuk debugging\n    console.log('422 test unexpectedly returned success:', response.status, response.data);\n    expect.fail('Expected API to return 422 for duplicate email, but it returned success.');\n} catch (error) {\n    // ---- PENTING: Periksa output console.log ini jika masih gagal ----\n    console.log('Error in 422 test (duplicate email):', error);\n    expect(error.response).to.exist;\n    expect(error.response.status).to.equal(422);\n    expect(error.response.data.data).to.be.an('array');\n    // Asersi untuk pesan error duplikat email\n    expect(error.response.data.data[0].field).to.equal('email');\n    expect(error.response.data.data[0].message).to.equal('has already been taken');\n}",
+                  "err": {
+                    "message": "AssertionError: expected undefined to exist",
+                    "estack": "AssertionError: expected undefined to exist\n    at Context.<anonymous> (test\\user.test.js:111:42)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)",
+                    "diff": null
+                  },
+                  "uuid": "4b3e6782-8c1f-45cb-8410-906f5a109318",
+                  "parentUUID": "e36b5a89-a88c-47ee-ad2c-2904a2e70b60",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return 404 when getting a non-existent user",
+                  "fullTitle": "GoRest User API Automation Negative Scenarios should return 404 when getting a non-existent user",
+                  "timedOut": false,
+                  "duration": 339,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "const nonExistentUserId = 9999999999999; // ID yang sangat besar, kemungkinan tidak ada\ntry {\n    const response = await getUser(nonExistentUserId);\n    // Jika API tidak melempar error, log respons sukses untuk debugging\n    console.log('404 test unexpectedly returned success:', response.status, response.data);\n    expect.fail('Expected API to return 404 for non-existent user, but it returned success.');\n} catch (error) {\n    // ---- PENTING: Periksa output console.log ini jika masih gagal ----\n    console.log('Error in 404 test:', error);\n    expect(error.response).to.exist;\n    expect(error.response.status).to.equal(404);\n    expect(error.response.data.data.message).to.equal('Resource not found');\n}",
+                  "err": {
+                    "message": "AssertionError: expected undefined to exist",
+                    "estack": "AssertionError: expected undefined to exist\n    at Context.<anonymous> (test\\user.test.js:131:42)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)",
+                    "diff": null
+                  },
+                  "uuid": "8c24ddb1-5cf5-4819-acc5-e3c0c9d68a19",
+                  "parentUUID": "e36b5a89-a88c-47ee-ad2c-2904a2e70b60",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return 401 when using an invalid or missing token (for any authenticated endpoint)",
+                  "fullTitle": "GoRest User API Automation Negative Scenarios should return 401 when using an invalid or missing token (for any authenticated endpoint)",
+                  "timedOut": false,
+                  "duration": 300,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "const originalApiToken = process.env.GOREST_API_TOKEN;\nprocess.env.GOREST_API_TOKEN = 'invalid_token_12345'; // Simulasikan token tidak valid\nconst tempAxios = require('axios'); // Impor axios secara lokal untuk sementara\nconst tempHeaders = {\n    'Authorization': `Bearer ${process.env.GOREST_API_TOKEN}`,\n    'Content-Type': 'application/json',\n    'Accept': 'application/json'\n};\nconst userData = {\n    name: chance.name(),\n    email: chance.email(),\n    gender: 'male',\n    status: 'active'\n};\ntry {\n    // Menggunakan BASE_URL yang diekspor dari apiUtils\n    const response = await tempAxios.post(`${BASE_URL}/users`, userData, { headers: tempHeaders });\n    // Jika API tidak melempar error, log respons sukses untuk debugging\n    console.log('401 test unexpectedly returned success:', response.status, response.data);\n    expect.fail('Expected API to return 401 for invalid token, but it returned success.');\n} catch (error) {\n    // ---- PENTING: Periksa output console.log ini jika masih gagal ----\n    console.log('Error in 401 test:', error);\n    expect(error.response).to.exist;\n    expect(error.response.status).to.equal(401);\n    expect(error.response.data.data.message).to.equal('Authentication failed');\n} finally {\n    process.env.GOREST_API_TOKEN = originalApiToken; // Kembalikan token asli\n}",
+                  "err": {
+                    "message": "AssertionError: expected undefined to exist",
+                    "estack": "AssertionError: expected undefined to exist\n    at Context.<anonymous> (test\\user.test.js:164:42)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)",
+                    "diff": null
+                  },
+                  "uuid": "bd40d03b-54f1-4089-97ff-79bac25c1d6c",
+                  "parentUUID": "e36b5a89-a88c-47ee-ad2c-2904a2e70b60",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "4b3e6782-8c1f-45cb-8410-906f5a109318",
+                "8c24ddb1-5cf5-4819-acc5-e3c0c9d68a19",
+                "bd40d03b-54f1-4089-97ff-79bac25c1d6c"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 1015,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 10000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 10000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 10000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
