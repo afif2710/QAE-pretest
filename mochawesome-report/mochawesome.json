@@ -5,9 +5,9 @@
     "passes": 4,
     "pending": 0,
     "failures": 3,
-    "start": "2025-07-18T01:55:36.856Z",
-    "end": "2025-07-18T01:55:39.838Z",
-    "duration": 2982,
+    "start": "2025-07-18T03:02:28.385Z",
+    "end": "2025-07-18T03:02:36.071Z",
+    "duration": 7686,
     "testsRegistered": 7,
     "passPercent": 57.14285714285714,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "d21b2965-78cb-428b-923f-6947db2ac89b",
+      "uuid": "65f449bc-7196-4485-a6ea-8e9848cf590f",
       "title": "",
       "fullFile": "D:\\pointA\\test\\user.test.js",
       "file": "\\test\\user.test.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "b8ef2e53-8f78-4a4f-a897-ff09fadf392b",
+          "uuid": "2ab6568a-26a2-4cb6-9c6b-05cb18cc55ff",
           "title": "GoRest User API Automation",
           "fullFile": "D:\\pointA\\test\\user.test.js",
           "file": "\\test\\user.test.js",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "7ed85741-c995-407a-b6f9-32136fa593f2",
+              "uuid": "378a9bd6-9d2d-4c3c-9808-51a45ba4a443",
               "title": "Positive Scenarios",
               "fullFile": "D:\\pointA\\test\\user.test.js",
               "file": "\\test\\user.test.js",
@@ -47,7 +47,7 @@
                   "title": "should successfully create a new user",
                   "fullTitle": "GoRest User API Automation Positive Scenarios should successfully create a new user",
                   "timedOut": false,
-                  "duration": 454,
+                  "duration": 1546,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -56,8 +56,8 @@
                   "context": null,
                   "code": "const userData = {\n    name: chance.name(),\n    email: chance.email({ domain: 'example.com' }), // Gunakan domain yang lebih umum untuk email\n    gender: chance.pickone(['male', 'female']),\n    status: chance.pickone(['active', 'inactive'])\n};\nconst response = await createUser(userData);\nexpect(response.status).to.equal(200); // Pastikan ini 200, sesuai API GoRest\nexpect(response.data.data).to.be.an('object');\nexpect(response.data.data.name).to.equal(userData.name);\nexpect(response.data.data.email).to.equal(userData.email);\nexpect(response.data.data.gender).to.equal(userData.gender);\nexpect(response.data.data.status).to.equal(userData.status);\nexpect(response.data.data.id).to.be.a('number');\nuserId = response.data.data.id; // Simpan ID pengguna untuk tes berikutnya\nconsole.log(`User created with ID: ${userId}`); // Untuk debugging",
                   "err": {},
-                  "uuid": "b2402c39-4c5d-4e6b-8105-44e111a0e5cc",
-                  "parentUUID": "7ed85741-c995-407a-b6f9-32136fa593f2",
+                  "uuid": "69b2c3b2-d8cc-4833-b2ac-df53ab56be56",
+                  "parentUUID": "378a9bd6-9d2d-4c3c-9808-51a45ba4a443",
                   "isHook": false,
                   "skipped": false
                 },
@@ -65,7 +65,7 @@
                   "title": "should successfully get user details",
                   "fullTitle": "GoRest User API Automation Positive Scenarios should successfully get user details",
                   "timedOut": false,
-                  "duration": 341,
+                  "duration": 772,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -74,8 +74,8 @@
                   "context": null,
                   "code": "expect(userId).to.exist; // Pastikan user ID tersedia dari tes sebelumnya\nconst response = await getUser(userId);\nexpect(response.status).to.equal(200);\nexpect(response.data.data).to.be.an('object');\nexpect(response.data.data.id).to.equal(userId);",
                   "err": {},
-                  "uuid": "e2db917e-ec3f-4f6d-9e0f-4832a74c8a73",
-                  "parentUUID": "7ed85741-c995-407a-b6f9-32136fa593f2",
+                  "uuid": "0b94fdcd-078f-47e1-9048-5ac5cb5329cd",
+                  "parentUUID": "378a9bd6-9d2d-4c3c-9808-51a45ba4a443",
                   "isHook": false,
                   "skipped": false
                 },
@@ -83,7 +83,7 @@
                   "title": "should successfully update user details",
                   "fullTitle": "GoRest User API Automation Positive Scenarios should successfully update user details",
                   "timedOut": false,
-                  "duration": 402,
+                  "duration": 630,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -92,8 +92,8 @@
                   "context": null,
                   "code": "expect(userId).to.exist;\nconst updatedName = chance.name();\nconst updatedEmail = chance.email({ domain: 'updated.com' });\nconst updateData = {\n    name: updatedName,\n    email: updatedEmail\n};\nconst response = await updateUser(userId, updateData);\nexpect(response.status).to.equal(200);\nexpect(response.data.data).to.be.an('object');\nexpect(response.data.data.id).to.equal(userId);\nexpect(response.data.data.name).to.equal(updatedName);\nexpect(response.data.data.email).to.equal(updatedEmail);",
                   "err": {},
-                  "uuid": "68eeb943-2b4c-435e-9086-e6edae565e3f",
-                  "parentUUID": "7ed85741-c995-407a-b6f9-32136fa593f2",
+                  "uuid": "70c5c779-5216-4a1b-ac24-9a7bc8e755f3",
+                  "parentUUID": "378a9bd6-9d2d-4c3c-9808-51a45ba4a443",
                   "isHook": false,
                   "skipped": false
                 },
@@ -101,7 +101,7 @@
                   "title": "should successfully delete a user",
                   "fullTitle": "GoRest User API Automation Positive Scenarios should successfully delete a user",
                   "timedOut": false,
-                  "duration": 370,
+                  "duration": 965,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -110,29 +110,29 @@
                   "context": null,
                   "code": "expect(userId).to.exist;\nconst response = await deleteUser(userId);\n// ---- PERBAIKAN DI SINI ----\n// Ubah asersi dari 204 ke 200 karena GoRest mengembalikan 200 untuk delete\nexpect(response.status).to.equal(200);\n// GoRest tidak selalu mengembalikan data.data=null untuk 200 delete, mungkin kosong {}\n// expect(response.data.data).to.be.null; // Anda bisa hapus atau sesuaikan ini jika perlu",
                   "err": {},
-                  "uuid": "0543b515-91a3-4fc7-9f94-8ce82ae6e50c",
-                  "parentUUID": "7ed85741-c995-407a-b6f9-32136fa593f2",
+                  "uuid": "a61c8a8f-2b77-4afe-a696-e75fdd2539e3",
+                  "parentUUID": "378a9bd6-9d2d-4c3c-9808-51a45ba4a443",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "b2402c39-4c5d-4e6b-8105-44e111a0e5cc",
-                "e2db917e-ec3f-4f6d-9e0f-4832a74c8a73",
-                "68eeb943-2b4c-435e-9086-e6edae565e3f",
-                "0543b515-91a3-4fc7-9f94-8ce82ae6e50c"
+                "69b2c3b2-d8cc-4833-b2ac-df53ab56be56",
+                "0b94fdcd-078f-47e1-9048-5ac5cb5329cd",
+                "70c5c779-5216-4a1b-ac24-9a7bc8e755f3",
+                "a61c8a8f-2b77-4afe-a696-e75fdd2539e3"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 1567,
+              "duration": 3913,
               "root": false,
               "rootEmpty": false,
               "_timeout": 10000
             },
             {
-              "uuid": "e36b5a89-a88c-47ee-ad2c-2904a2e70b60",
+              "uuid": "f0673f18-bacb-46d3-b9ca-771ca58e60fb",
               "title": "Negative Scenarios",
               "fullFile": "D:\\pointA\\test\\user.test.js",
               "file": "\\test\\user.test.js",
@@ -141,7 +141,7 @@
                   "title": "\"before all\" hook in \"Negative Scenarios\"",
                   "fullTitle": "GoRest User API Automation Negative Scenarios \"before all\" hook in \"Negative Scenarios\"",
                   "timedOut": false,
-                  "duration": 367,
+                  "duration": 570,
                   "state": null,
                   "speed": null,
                   "pass": false,
@@ -150,8 +150,8 @@
                   "context": null,
                   "code": "// Buat user yang akan digunakan untuk memicu error duplikat email\nconst userData = {\n    name: chance.name(),\n    email: chance.email({ domain: 'duplicate.com' }),\n    gender: 'male',\n    status: 'active'\n};\nconst response = await createUser(userData);\nexistingUserEmail = response.data.data.email;\nconsole.log(`Created user for 422 negative test: ${existingUserEmail}`);",
                   "err": {},
-                  "uuid": "64ba8d3a-9774-4a91-a2ec-c8fed1fcc61a",
-                  "parentUUID": "e36b5a89-a88c-47ee-ad2c-2904a2e70b60",
+                  "uuid": "964b3e7e-0fb2-4662-958f-5ec25f871bab",
+                  "parentUUID": "f0673f18-bacb-46d3-b9ca-771ca58e60fb",
                   "isHook": true,
                   "skipped": false
                 }
@@ -162,7 +162,7 @@
                   "title": "should return 422 when creating a user with an existing email (duplicate data)",
                   "fullTitle": "GoRest User API Automation Negative Scenarios should return 422 when creating a user with an existing email (duplicate data)",
                   "timedOut": false,
-                  "duration": 376,
+                  "duration": 986,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -175,8 +175,8 @@
                     "estack": "AssertionError: expected undefined to exist\n    at Context.<anonymous> (test\\user.test.js:111:42)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)",
                     "diff": null
                   },
-                  "uuid": "4b3e6782-8c1f-45cb-8410-906f5a109318",
-                  "parentUUID": "e36b5a89-a88c-47ee-ad2c-2904a2e70b60",
+                  "uuid": "9ed860d9-9620-47c6-b10a-1edf69fcb75e",
+                  "parentUUID": "f0673f18-bacb-46d3-b9ca-771ca58e60fb",
                   "isHook": false,
                   "skipped": false
                 },
@@ -184,7 +184,7 @@
                   "title": "should return 404 when getting a non-existent user",
                   "fullTitle": "GoRest User API Automation Negative Scenarios should return 404 when getting a non-existent user",
                   "timedOut": false,
-                  "duration": 339,
+                  "duration": 1097,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -197,8 +197,8 @@
                     "estack": "AssertionError: expected undefined to exist\n    at Context.<anonymous> (test\\user.test.js:131:42)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)",
                     "diff": null
                   },
-                  "uuid": "8c24ddb1-5cf5-4819-acc5-e3c0c9d68a19",
-                  "parentUUID": "e36b5a89-a88c-47ee-ad2c-2904a2e70b60",
+                  "uuid": "de63acfa-8e54-4123-a233-e28d7f4ff96b",
+                  "parentUUID": "f0673f18-bacb-46d3-b9ca-771ca58e60fb",
                   "isHook": false,
                   "skipped": false
                 },
@@ -206,7 +206,7 @@
                   "title": "should return 401 when using an invalid or missing token (for any authenticated endpoint)",
                   "fullTitle": "GoRest User API Automation Negative Scenarios should return 401 when using an invalid or missing token (for any authenticated endpoint)",
                   "timedOut": false,
-                  "duration": 300,
+                  "duration": 1103,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -219,8 +219,8 @@
                     "estack": "AssertionError: expected undefined to exist\n    at Context.<anonymous> (test\\user.test.js:164:42)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)",
                     "diff": null
                   },
-                  "uuid": "bd40d03b-54f1-4089-97ff-79bac25c1d6c",
-                  "parentUUID": "e36b5a89-a88c-47ee-ad2c-2904a2e70b60",
+                  "uuid": "6275b5fe-f864-4c6d-ab1f-3ef776929e0c",
+                  "parentUUID": "f0673f18-bacb-46d3-b9ca-771ca58e60fb",
                   "isHook": false,
                   "skipped": false
                 }
@@ -228,13 +228,13 @@
               "suites": [],
               "passes": [],
               "failures": [
-                "4b3e6782-8c1f-45cb-8410-906f5a109318",
-                "8c24ddb1-5cf5-4819-acc5-e3c0c9d68a19",
-                "bd40d03b-54f1-4089-97ff-79bac25c1d6c"
+                "9ed860d9-9620-47c6-b10a-1edf69fcb75e",
+                "de63acfa-8e54-4123-a233-e28d7f4ff96b",
+                "6275b5fe-f864-4c6d-ab1f-3ef776929e0c"
               ],
               "pending": [],
               "skipped": [],
-              "duration": 1015,
+              "duration": 3186,
               "root": false,
               "rootEmpty": false,
               "_timeout": 10000
